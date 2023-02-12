@@ -1,0 +1,39 @@
+DFS : 1 2 4 5 3
+
+구현하는 방법
+1. 돌다리를 두드려보는 방법
+
+void dfs(int here){
+	visited[here] = 1;
+	for(int there : adj[here]){
+		if(visited[there]) continue;
+		dfs(there);
+		if(visited[there] == 0){
+			dfs(there);
+		}
+	}
+}
+
+2. 무조건 호출
+
+void dfs(int here){
+	if(visited[here]) return;
+	for(int there : adj[here]){
+		dfs(there);
+	}
+}
+
+
+
+def dfs_recursive(graph, start, visited = []):
+## 데이터를 추가하는 명령어 / 재귀가 이루어짐 
+    visited.append(start)
+ 
+    for node in graph[start]:
+        if node not in visited:
+            dfs_recursive(graph, node, visited)
+    return visited
+
+
+main()
+dfs_recursive(grapth, 'A')
